@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">randomizer</string>
+    <string name="numb_too_much">Your number too large</string>
+    <string name="empty_field">Enter the number!</string>
+    <string name="min_greater_max">max must be greater than min!</string>
 </resources>
