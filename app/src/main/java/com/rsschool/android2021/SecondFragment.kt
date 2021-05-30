@@ -2,8 +2,6 @@ package com.rsschool.android2021
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +27,7 @@ class SecondFragment : Fragment() {
             this,
             object : OnBackPressedCallback(true) {
                 override fun handleOnBackPressed() {
+                    remove()
                     onBackPressed.invoke()
                 }
             })

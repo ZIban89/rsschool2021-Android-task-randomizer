@@ -1,6 +1,5 @@
 package com.rsschool.android2021
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -19,7 +18,6 @@ class FirstFragment : Fragment() {
     private lateinit var minField: EditText
     private lateinit var maxField: EditText
     private lateinit var mainActivity: IMainActivity
-
 
     override fun onAttach(cont: Context) {
         super.onAttach(cont)
@@ -50,14 +48,18 @@ class FirstFragment : Fragment() {
             val min: Long
             val max: Long
             when {
-                (minField.text.isEmpty() || maxField.text.isEmpty()) -> makeToast(R.string.empty_field)
-                (minField.text.length > 10 || maxField.text.length > 10) -> makeToast(R.string.numb_too_much)
+                minField.text.isEmpty() && maxField.text.isEmpty() -> makeToast(R.string.empty_fields)
+                minField.text.isEmpty() -> makeToast(R.string.empty_min)
+                maxField.text.isEmpty() -> makeToast(R.string.empty_max)
+                minField.text.length > 10 && maxField.text.length > 10 -> makeToast(R.string.numb_too_much)
+                minField.text.length > 10 -> makeToast(R.string.min_too_much)
+                maxField.text.length > 10 -> makeToast(R.string.max_too_much)
                 else -> {
                     min = minField.text.toString().toLong()
                     max = maxField.text.toString().toLong()
                     when {
-                        (min > max) -> makeToast(R.string.min_greater_max)
-                        (max > Int.MAX_VALUE) -> makeToast(R.string.numb_too_much)
+                        min > max -> makeToast(R.string.min_greater_max)
+                        max > Int.MAX_VALUE -> makeToast(R.string.numb_too_much)
                         else -> mainActivity.onGenerateBtnPressed(min.toInt(), max.toInt())
                     }
                 }
