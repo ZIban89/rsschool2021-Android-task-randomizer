@@ -1,12 +1,14 @@
 package com.rsschool.android2021;
 
 import android.os.Bundle;
+import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements IMainActivity {
+    private Toast toast;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,5 +41,14 @@ public class MainActivity extends AppCompatActivity implements IMainActivity {
     @Override
     public void onBackBtnPressed(int previousNumb) {
         openFirstFragment(previousNumb);
+    }
+
+    @Override
+    public void makeToast(int message) {
+        if (toast == null) {
+            toast = Toast.makeText(this, null, Toast.LENGTH_SHORT);
+        }
+        toast.setText(message);
+        toast.show();
     }
 }

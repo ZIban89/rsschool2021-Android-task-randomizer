@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.core.widget.addTextChangedListener
 
 class FirstFragment : Fragment() {
 
@@ -41,10 +42,13 @@ class FirstFragment : Fragment() {
         generateButton = view.findViewById(R.id.generate)
         minField = view.findViewById(R.id.min_value)
         maxField = view.findViewById(R.id.max_value)
+        minField.addTextChangedListener { generateButton?.isEnabled = true }
+        maxField.addTextChangedListener { generateButton?.isEnabled = true }
         val result = arguments?.getInt(PREVIOUS_RESULT_KEY)
         previousResult?.text = "Previous result: ${result.toString()}"
 
         generateButton?.setOnClickListener {
+            generateButton?.isEnabled = false
             val min: Long
             val max: Long
             when {
@@ -69,7 +73,7 @@ class FirstFragment : Fragment() {
 
 
     private fun makeToast(message: Int) {
-        Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show()
+        mainActivity.makeToast(message)
     }
 
     companion object {
