@@ -55,9 +55,9 @@ class FirstFragment : Fragment() {
                 minField.text.isEmpty() && maxField.text.isEmpty() -> makeToast(R.string.empty_fields)
                 minField.text.isEmpty() -> makeToast(R.string.empty_min)
                 maxField.text.isEmpty() -> makeToast(R.string.empty_max)
-                minField.text.length > 10 && maxField.text.length > 10 -> makeToast(R.string.numb_too_much)
-                minField.text.length > 10 -> makeToast(R.string.min_too_much)
-                maxField.text.length > 10 -> makeToast(R.string.max_too_much)
+                minField.text.length > 19 && maxField.text.length > 19 -> makeToast(R.string.numb_too_much)
+                minField.text.length > 19 -> makeToast(R.string.min_too_much)
+                maxField.text.length > 19 -> makeToast(R.string.max_too_much)
                 else -> {
                     min = minField.text.toString().toLong()
                     max = maxField.text.toString().toLong()
